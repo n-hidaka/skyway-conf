@@ -1,4 +1,4 @@
-import { decorate, observable, computed, action } from "mobx";
+import { makeObservable, observable, computed, action } from "mobx";
 import { IObservableArray } from "mobx";
 import Peer, { RoomStream, SfuRoom, MeshRoom } from "skyway-js";
 import { RoomInit, RoomStat, RoomChat, RoomReaction } from "../utils/types";
@@ -40,6 +40,31 @@ class RoomStore {
     this.pinnedId = null;
     this.castRequestCount = 0;
     this.rtcStats = null;
+
+    makeObservable(this, {
+      peer: observable.ref,
+      isReady: observable,
+      room: observable.ref,
+      mode: observable,
+      id: observable,
+      streams: observable.shallow,
+      stats: observable.shallow,
+      chats: observable.shallow,
+      myLastChat: observable.ref,
+      myLastReaction: observable.ref,
+      pinnedId: observable,
+      castRequestCount: observable,
+      rtcStats: observable.ref,
+      name: computed,
+      isJoined: computed,
+      pinnedStream: computed,
+      load: action,
+      addLocalChat: action,
+      addRemoteChat: action,
+      removeStream: action,
+      getPeerConnection: action,
+      cleanUp: action,
+    });
   }
 
   get name(): string {
@@ -122,29 +147,5 @@ class RoomStore {
     this.room = null;
   }
 }
-decorate(RoomStore, {
-  peer: observable.ref,
-  isReady: observable,
-  room: observable.ref,
-  mode: observable,
-  id: observable,
-  streams: observable.shallow,
-  stats: observable.shallow,
-  chats: observable.shallow,
-  myLastChat: observable.ref,
-  myLastReaction: observable.ref,
-  pinnedId: observable,
-  castRequestCount: observable,
-  rtcStats: observable.ref,
-  name: computed,
-  isJoined: computed,
-  pinnedStream: computed,
-  load: action,
-  addLocalChat: action,
-  addRemoteChat: action,
-  removeStream: action,
-  getPeerConnection: action,
-  cleanUp: action,
-});
 
 export default RoomStore;
