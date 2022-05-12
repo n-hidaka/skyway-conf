@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 import debug from "debug";
 import packageInfo from "../../package.json";
 import { globalStyle } from "../shared/global-style";
