@@ -26,7 +26,7 @@ class MediaStore {
     this.audioTrack = null;
     this.videoTrack = null;
 
-    makeObservable(this, {
+    makeObservable<MediaStore, "audioTrack" | "videoTrack">(this, {
       audioInDevices: observable.shallow,
       videoInDevices: observable.shallow,
       audioDeviceId: observable,
