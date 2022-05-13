@@ -6,7 +6,7 @@ class NotificationStore {
   items: IObservableArray<NotificationItem>;
 
   constructor() {
-    // @ts-ignore: to type IObservableArray
+    // ts-ignore: to type IObservableArray
     this.items = [];
 
     makeObservable(this, {
