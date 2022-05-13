@@ -10,7 +10,7 @@ import { openChat, closeChat, sendChat } from "../effects/chat";
 export const ChatOpener: FunctionComponent<Record<string, unknown>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickOpenChat = useCallback(openChat(store), [store]);
+  const onClickOpenChat = useCallback(() => openChat(store), [store]);
 
   return (
     <Observer>
@@ -22,8 +22,8 @@ export const ChatOpener: FunctionComponent<Record<string, unknown>> = () => {
 export const Chat: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickCloseChat = useCallback(closeChat(store), [store]);
-  const onClickSendChat = useCallback(sendChat(store), [store]);
+  const onClickCloseChat = useCallback(() => closeChat(store), [store]);
+  const onClickSendChat = useCallback(() => sendChat(store), [store]);
 
   const { ui, room } = store;
   return (

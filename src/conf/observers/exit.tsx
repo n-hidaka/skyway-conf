@@ -9,7 +9,7 @@ import { exitRoom } from "../effects/exit";
 export const ExitOpener: FunctionComponent<Record<string, unknown>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickExitRoom = useCallback(exitRoom(), [store]);
+  const onClickExitRoom = useCallback(() => exitRoom(), [store]);
 
   return (
     <Observer>

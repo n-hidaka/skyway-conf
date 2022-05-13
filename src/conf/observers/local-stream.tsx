@@ -14,10 +14,16 @@ import {
 const LocalStream: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickCastVideo = useCallback(castVideo(store), [store]);
-  const onClickOpenSettings = useCallback(openSettings(store), [store]);
-  const onClickToggleAudioMuted = useCallback(toggleAudioMuted(store), [store]);
-  const onClickToggleVideoMuted = useCallback(toggleVideoMuted(store), [store]);
+  const onClickCastVideo = useCallback(() => castVideo(store), [store]);
+  const onClickOpenSettings = useCallback(() => openSettings(store), [store]);
+  const onClickToggleAudioMuted = useCallback(
+    () => toggleAudioMuted(store),
+    [store]
+  );
+  const onClickToggleVideoMuted = useCallback(
+    () => toggleVideoMuted(store),
+    [store]
+  );
 
   const { media, client, ui } = store;
   return (

@@ -9,7 +9,7 @@ import RemoteStreamsLayout from "../components/remote-streams-layout";
 const RemoteStreams: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickSetPinned = useCallback(setPinned(store), [store]);
+  const onClickSetPinned = useCallback(() => setPinned(store), [store]);
 
   const { room } = store;
   return (
