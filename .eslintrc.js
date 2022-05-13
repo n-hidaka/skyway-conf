@@ -20,8 +20,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react",
   ],
   rules: {
     "no-console": "off",

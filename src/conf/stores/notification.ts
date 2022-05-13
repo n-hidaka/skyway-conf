@@ -6,10 +6,9 @@ class NotificationStore {
   items: IObservableArray<NotificationItem>;
 
   constructor() {
-    // @ts-ignore: to type IObservableArray
-    this.items = [];
+    this.items = observable<NotificationItem>([]);
 
-    makeObservable(this, {
+    makeObservable<NotificationStore, "show">(this, {
       items: observable.shallow,
       showInfo: action,
       showChat: action,

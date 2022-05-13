@@ -17,7 +17,7 @@ class ClientStore {
     this.displayName = "YOUR_NAME";
     this.parsedBrowser = null;
 
-    makeObservable(this, {
+    makeObservable<ClientStore, "parsedBrowser">(this, {
       hasGetDisplayMedia: observable,
       hasUserVideoDevice: observable,
       isReady: observable,

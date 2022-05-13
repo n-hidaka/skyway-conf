@@ -6,10 +6,10 @@ import { StoreContext } from "../contexts";
 import { setPinned } from "../effects/remote-streams";
 import RemoteStreamsLayout from "../components/remote-streams-layout";
 
-const RemoteStreams: FunctionComponent<{}> = () => {
+const RemoteStreams: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
-  const onClickSetPinned = useCallback(setPinned(store), [store]);
+  const onClickSetPinned = useCallback(() => setPinned(store), [store]);
 
   const { room } = store;
   return (
