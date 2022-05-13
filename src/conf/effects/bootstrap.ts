@@ -179,7 +179,10 @@ export const listenGlobalEvents =
   () => {
     log("listenGlobalEvents()");
 
-    const reloadOnHashChange = () => location.reload(true);
+    const reloadOnHashChange = () => {
+      const href = window.location.href;
+      window.location.href = href;
+    };
     const reloadOnDeviceAddOrRemoved = async () => {
       log("devicechange event fired");
       const { audioInDevices, videoInDevices } = await getUserDevices({
@@ -202,13 +205,15 @@ export const listenGlobalEvents =
         curAudioInDevices.length &&
         audioInDevices.length !== curAudioInDevices.length
       ) {
-        location.reload(true);
+        const href = window.location.href;
+        window.location.href = href;
       }
       if (
         curVideoInDevices.length &&
         videoInDevices.length !== curVideoInDevices.length
       ) {
-        location.reload(true);
+        const href = window.location.href;
+        window.location.href = href;
       }
     };
 
