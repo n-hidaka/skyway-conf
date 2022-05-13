@@ -11,7 +11,7 @@ import {
   toggleVideoMuted,
 } from "../effects/local-stream";
 
-const LocalStream: FunctionComponent<{}> = () => {
+const LocalStream: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
   const onClickCastVideo = useCallback(castVideo(store), [store]);

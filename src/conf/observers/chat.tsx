@@ -7,7 +7,7 @@ import { IconButton } from "../components/icon";
 import ChatLayout from "../components/chat-layout";
 import { openChat, closeChat, sendChat } from "../effects/chat";
 
-export const ChatOpener: FunctionComponent<{}> = () => {
+export const ChatOpener: FunctionComponent<Record<string, unknown>> = () => {
   const store = useContext(StoreContext);
 
   const onClickOpenChat = useCallback(openChat(store), [store]);
@@ -19,7 +19,7 @@ export const ChatOpener: FunctionComponent<{}> = () => {
   );
 };
 
-export const Chat: FunctionComponent<{}> = () => {
+export const Chat: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
   const onClickCloseChat = useCallback(closeChat(store), [store]);

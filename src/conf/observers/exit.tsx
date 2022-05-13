@@ -6,7 +6,7 @@ import { StoreContext } from "../contexts";
 import { IconButton } from "../components/icon";
 import { exitRoom } from "../effects/exit";
 
-export const ExitOpener: FunctionComponent<{}> = () => {
+export const ExitOpener: FunctionComponent<Record<string, unknown>> = () => {
   const store = useContext(StoreContext);
 
   const onClickExitRoom = useCallback(exitRoom(), [store]);

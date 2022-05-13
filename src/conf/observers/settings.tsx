@@ -18,7 +18,7 @@ import {
   toggleAudioMuted,
 } from "../effects/settings";
 
-const Settings: FunctionComponent<{}> = () => {
+const Settings: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
   const onChangeDispName = useCallback(changeDispName(store), [store]);
