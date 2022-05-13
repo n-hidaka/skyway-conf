@@ -14,10 +14,8 @@ class MediaStore {
   private videoTrack: MediaStreamTrack | null;
 
   constructor() {
-    // ts-ignore: to type IObservableArray
-    this.audioInDevices = [];
-    // ts-ignore: to type IObservableArray
-    this.videoInDevices = [];
+    this.audioInDevices = observable<MediaDeviceInfo>([]);
+    this.videoInDevices = observable<MediaDeviceInfo>([]);
     this.audioDeviceId = null;
     this.videoDeviceId = null;
     this.isVideoTrackMuted = false;

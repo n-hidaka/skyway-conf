@@ -33,8 +33,7 @@ class RoomStore {
 
     this.streams = new Map();
     this.stats = new Map();
-    // ts-ignore: to type IObservableArray
-    this.chats = [];
+    this.chats = observable<RoomChat>([]);
     this.myLastChat = null;
     this.myLastReaction = null;
     this.pinnedId = null;
