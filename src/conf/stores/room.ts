@@ -141,7 +141,7 @@ class RoomStore {
     );
     this.streams.clear();
     this.stats.clear();
-    this.chats.length = 0;
+    this.chats.clear();
     this.myLastChat = null;
     this.room = null;
   }
