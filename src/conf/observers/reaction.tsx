@@ -16,7 +16,10 @@ export const ReactionOpener: FunctionComponent<
     () => toggleReaction(store),
     [store]
   );
-  const onClickSendReaction = useCallback(() => sendReaction(store), [store]);
+  const onClickSendReaction = useCallback(
+    (reaction: string) => sendReaction(reaction, store),
+    [store]
+  );
   const { ui } = store;
 
   return (

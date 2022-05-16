@@ -23,7 +23,10 @@ export const Chat: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
   const onClickCloseChat = useCallback(() => closeChat(store), [store]);
-  const onClickSendChat = useCallback(() => sendChat(store), [store]);
+  const onClickSendChat = useCallback(
+    (text: string) => sendChat(text, store),
+    [store]
+  );
 
   const { ui, room } = store;
   return (
