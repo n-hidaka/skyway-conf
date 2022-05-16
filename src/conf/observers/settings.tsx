@@ -21,7 +21,10 @@ import {
 const Settings: FunctionComponent<Record<string, never>> = () => {
   const store = useContext(StoreContext);
 
-  const onChangeDispName = useCallback(() => changeDispName(store), [store]);
+  const onChangeDispName = useCallback(
+    (name: string) => changeDispName(name, store),
+    [store]
+  );
   const onClickEnableUserVideo = useCallback(
     () => enableUserVideo(store),
     [store]
@@ -39,11 +42,11 @@ const Settings: FunctionComponent<Record<string, never>> = () => {
     [store]
   );
   const onChangeVideoDeviceId = useCallback(
-    () => changeVideoDeviceId(store),
+    (deviceId: string) => changeVideoDeviceId(deviceId, store),
     [store]
   );
   const onChangeAudioDeviceId = useCallback(
-    () => changeAudioDeviceId(store),
+    (deviceId: string) => changeAudioDeviceId(deviceId, store),
     [store]
   );
   const onClickJoinConference = useCallback(
