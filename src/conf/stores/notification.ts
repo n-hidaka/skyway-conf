@@ -42,7 +42,10 @@ class NotificationStore {
   private show(type: NotificationType, text: string, duration: number) {
     const item: NotificationItem = { id: Math.random(), type, text };
     this.items.push(item);
-    setTimeout(() => this.items.remove(item), duration);
+    setTimeout(() => {
+      const nextItems = this.items.filter((i) => i.id !== item.id);
+      this.items.replace(nextItems);
+    }, duration);
   }
 }
 
