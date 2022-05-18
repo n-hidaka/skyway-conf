@@ -47,7 +47,7 @@ const RoomCreate: FunctionComponent<Props> = (props) => {
       <div css={itemStyle}>
         <div>ROOM TYPE</div>
         <div>
-          {["sfu", "mesh"].map((type) => (
+          {["sfu", "mesh", "skyway-beta"].map((type) => (
             <label key={type} css={roomTypeStyle}>
               <input
                 type="radio"
