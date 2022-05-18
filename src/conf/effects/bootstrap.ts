@@ -7,6 +7,7 @@ import {
 } from "../../shared/validate";
 import { getUserDevices, getUserAudioTrack } from "../utils/webrtc";
 import { initPeer } from "../utils/skyway";
+import * as SkyWayBeta from "../utils/skyway-beta";
 import { RoomInit } from "../utils/types";
 import RootStore from "../stores";
 
@@ -19,7 +20,9 @@ export const checkRoomSetting = ({ ui, room }: RootStore) => {
 
   if (!isValidRoomType(roomType)) {
     throw ui.showError(
-      new Error("Invalid room type! it should be `sfu` or `mesh`.")
+      new Error(
+        "Invalid room type! it should be `sfu` or `mesh` or `skyway-beta`."
+      )
     );
   }
   if (!isValidRoomId(roomId)) {
@@ -30,24 +33,47 @@ export const checkRoomSetting = ({ ui, room }: RootStore) => {
     );
   }
 
-  (async () => {
-    const peer = await initPeer(params.has("turn")).catch((err) => {
-      throw ui.showError(err);
-    });
-    // just log it, do not trust them
-    peer.on("error", console.error);
-    room.load(
-      {
-        mode: roomType as RoomInit["mode"],
-        id: roomId,
-        useH264: params.has("h264"),
-      },
-      peer
-    );
+  if (roomType === "skyway-beta")
+    (async () => {
+      const peer = await SkyWayBeta.initPeer(params.has("turn")).catch(
+        (err) => {
+          throw ui.showError(err);
+        }
+      );
+      // just log it, do not trust them
+      peer.on("error", console.error);
+      room.load(
+        {
+          mode: roomType as RoomInit["mode"],
+          id: roomId,
+          useH264: params.has("h264"),
+        },
+        peer
+      );
+      // room.peer =
 
-    log(`room: ${roomType}/${roomId}`);
-    log("peer instance created");
-  })();
+      log(`room: ${roomType}/${roomId}`);
+      log("peer instance created");
+    })();
+  else
+    (async () => {
+      const peer = await initPeer(params.has("turn")).catch((err) => {
+        throw ui.showError(err);
+      });
+      // just log it, do not trust them
+      peer.on("error", console.error);
+      room.load(
+        {
+          mode: roomType as RoomInit["mode"],
+          id: roomId,
+          useH264: params.has("h264"),
+        },
+        peer
+      );
+
+      log(`room: ${roomType}/${roomId}`);
+      log("peer instance created");
+    })();
 };
 
 export const initAudioDeviceAndClient = ({ ui, client, media }: RootStore) => {
