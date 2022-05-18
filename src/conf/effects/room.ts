@@ -37,6 +37,8 @@ export const joinRoom = (store: RootStore) => {
     room.room = room.peer.joinRoom<MeshRoom>(room.name, roomOptions);
   } else if (room.mode === "sfu") {
     room.room = room.peer.joinRoom<SfuRoom>(room.name, roomOptions);
+  } else if (room.mode === "skyway-beta") {
+    room.room = room.peer.joinRoom<SfuRoom>(room.name, roomOptions);
   }
 
   const confRoom = room.room;

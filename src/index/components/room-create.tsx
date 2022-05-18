@@ -46,20 +46,22 @@ const RoomCreate: FunctionComponent<Props> = (props) => {
 
       <div css={itemStyle}>
         <div>ROOM TYPE</div>
-        <div>
-          {["sfu", "mesh"].map((type) => (
-            <label key={type} css={roomTypeStyle}>
-              <input
-                type="radio"
-                onChange={() => setRoomType(type)}
-                value={roomType}
-                checked={roomType === type}
-                name="room-type"
-              />{" "}
-              {type}
-            </label>
+        <ul css={roomTypeUlStyle}>
+          {["sfu", "mesh", "skyway-beta"].map((type) => (
+            <li key={type} css={roomTypeLiStyle}>
+              <label css={roomTypeStyle}>
+                <input
+                  type="radio"
+                  onChange={() => setRoomType(type)}
+                  value={roomType}
+                  checked={roomType === type}
+                  name="room-type"
+                />{" "}
+                {type}
+              </label>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div css={buttonWrapStyle}>
@@ -88,7 +90,6 @@ const itemStyle = css({
   display: "grid",
   alignItems: "center",
   gridTemplateColumns: "88px 1fr",
-  height: 40,
   marginBottom: 4,
 });
 
@@ -116,6 +117,15 @@ const roomTypeStyle = css({
   "& > input": {
     verticalAlign: "middle",
   },
+});
+
+const roomTypeUlStyle = css({
+  listStyle: "none",
+  paddingInlineStart: "0px",
+});
+
+const roomTypeLiStyle = css({
+  textAlign: "left",
 });
 
 const buttonWrapStyle = css({

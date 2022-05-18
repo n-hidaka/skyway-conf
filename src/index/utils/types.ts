@@ -1,4 +1,4 @@
 export interface RoomInit {
-  mode: "sfu" | "mesh";
+  mode: "sfu" | "mesh" | "skyway-beta";
   id: string;
 }
